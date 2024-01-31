@@ -22,7 +22,8 @@ def getFaceSwapModel(model_path: str):
 
 def getFaceAnalyser(model_path: str, providers,
                     det_size=(320, 320)):
-    face_analyser = insightface.app.FaceAnalysis(name="buffalo_l", root="./checkpoints", providers=providers)
+    # chen.wu root changed from `./checkpoints` to `./yoyo_inswapper/checkpoints`
+    face_analyser = insightface.app.FaceAnalysis(name="buffalo_l", root="./yoyo_inswapper/checkpoints", providers=providers)
     face_analyser.prepare(ctx_id=0, det_size=det_size)
     return face_analyser
 
