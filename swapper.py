@@ -92,7 +92,8 @@ def process(source_img: Union[Image.Image, List],
             print("Replacing faces in target image from the left to the right by order")
             for i in range(num_target_faces):
                 source_faces = get_many_faces(face_analyser, cv2.cvtColor(np.array(source_img[i]), cv2.COLOR_RGB2BGR))
-                source_index = i
+                # chen.wu
+                source_index = 0
                 target_index = i
 
                 if source_faces is None:
@@ -243,7 +244,9 @@ if __name__ == "__main__":
                                                          n_layers=9,
                                                          connect_list=["32", "64", "128", "256"],
                                                         ).to(device)
-        ckpt_path = "CodeFormer/CodeFormer/weights/CodeFormer/codeformer.pth"
+        # chen.wu
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+        ckpt_path = os.path.join(current_dir, 'CodeFormer/CodeFormer/weights/CodeFormer/codeformer.pth')
         checkpoint = torch.load(ckpt_path)["params_ema"]
         codeformer_net.load_state_dict(checkpoint)
         codeformer_net.eval()
