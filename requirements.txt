@@ -17,4 +17,4 @@ tqdm
 yapf
 lpips
 insightface>=0.7.3
-onnxruntime
+onnxruntime==1.16.3
